@@ -45,9 +45,27 @@
 <input type="checkbox" class="main-nav-check" id="main-nav-check" />
 
     <div class="main-nav" id="main-nav">
-      <div id="li7e-button"></div>
+<!--      <div id="li7e-button"></div>-->
       <div id="panel-header">
         <ul id="header-bar">
+          <li>               
+            <span aria-hidden="true" class="button-header">run</span>
+          </li>    
+          <li>
+            <select id="examples">
+              <option value="test">Examples</option>
+              <option value="clock">Clocks</option>
+            </select>
+          </li>
+          <li>
+            <select id="lib">
+              <option value="library">Library</option>
+              <option value="processingjs">Processingjs</option>
+            </select>
+          </li>
+      </ul>
+        
+<!--        <ul id="header-bar">
           <li>
             <span aria-hidden="true" class="icon-users button-header"></span>
           </li>
@@ -64,18 +82,21 @@
             <span aria-hidden="true" class="icon-cog button-header"></span>
           </li>
         </ul>
+-->      </div>
+      <div id="panel-tabs">
+
       </div>
-      <div id="panel-tabs"></div>
+      
       <div id="panel-code">
 
-            <textarea id="code" name="code"></textarea>
+            <textarea id="code" name="code"> </textarea>
 
 </div>
     </div>
 
     <div id="canvas" class="page-wrap">
           <label for="main-nav-check">
-              <span aria-hidden="true" class="icon-align-justify button-header"></span>
+              <span aria-hidden="true" class="button-header">☰</span>
           </label>
       <iframe id="preview_iframe" frameborder="0"></iframe>
     </div>
@@ -85,17 +106,12 @@
     <script src="/static/js/li7e.js"></script>
   
     <script>
-
-
-    $('#menu').click(function(){
-        $('#scratchpad').toggleClass('menu');
-        mixpanel.track("Menu toggle");
-    })
     
+/*
 $(document).ready(function(){
         var active = false;
         $("#li7e-button").click(function(){
-//.animate({opacity: "0.1", left: "+=400"}, 1200)
+        //.animate({opacity: "0.1", left: "+=400"}, 1200)
                 if (active === false) {
                   $("#panel").animate({left: "+=600"}, "slow");
                   $("#li7e-button").animate({marginRight: "+=35"}, "slow");
@@ -107,10 +123,8 @@ $(document).ready(function(){
                 }
                 $(this).toggleClass("active"); return false;
         });
-
-         
 });
-
+*/
     </script>
 
   </body>

@@ -5,6 +5,7 @@ $(function () {
 //    mode: "htmlmixed",
     mode: "javascript",
     tabMode: "indent",
+    value: " ",
     electricChars: true,
     indentWithTabs: false,
     indentUnit: 2,
@@ -30,7 +31,33 @@ $(function () {
       }
   setTimeout(updatePreview, 300);
 
+  // Selecting with library use
+  var foo = document.getElementById("lib");
+  foo.onchange = function(){
+      var option = this.options[this.selectedIndex].value;
+      if (option == "processingjs"){
+          editor.setValue("<script src=\"http://processingjs.org/js/processing.min.js\"></script>\n"+
+                           "<canvas id=\"processing-canvas\"> </canvas>\n"+
+                           "<script type=\"text/processing\" data-processing-target=\"processing-canvas\">\n" +
+                           "\nvoid setup(){\n\n} \n\nvoid draw(){\n\n}\n\n"+
+                           "</script>");
+      }
+  }
 
+  // Selecting examples
+  var ex = document.getElementById("examples");
+  ex.onchange = function(){
+      var option = this.options[this.selectedIndex].value;
+      if (option == "clocks"){
+          editor.setValue("<script src=\"http://processingjs.org/js/processing.min.js\"></script>\n"+
+                           "<canvas id=\"processing-canvas\"> </canvas>\n"+
+                           "<script type=\"text/processing\" data-processing-target=\"processing-canvas\">\n" +
+                           "\nvoid setup(){\n\n} \n\nvoid draw(){\n\n}\n\n"+
+                           "</script>");
+      }
+  }
+
+   // Drag and drop functionality 
 
 /*
     var clicking = false;
