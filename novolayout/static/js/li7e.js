@@ -48,14 +48,42 @@ $(function () {
   var ex = document.getElementById("examples");
   ex.onchange = function(){
       var option = this.options[this.selectedIndex].value;
-      if (option == "clocks"){
-          editor.setValue("<script src=\"http://processingjs.org/js/processing.min.js\"></script>\n"+
-                           "<canvas id=\"processing-canvas\"> </canvas>\n"+
-                           "<script type=\"text/processing\" data-processing-target=\"processing-canvas\">\n" +
-                           "\nvoid setup(){\n\n} \n\nvoid draw(){\n\n}\n\n"+
-                           "</script>");
+      if (option == "clock"){
+          loadgist(5700421);
       }
   }
+
+
+function loadgist(gistid) {
+    $.ajax({
+        url: 'https://api.github.com/gists/'+gistid,
+        type: 'GET',
+        dataType: 'jsonp'
+    }).success( function(data) {
+    var objects = [];
+    gistdata = data.data;
+    for (file in gistdata.files) {
+    if (gistdata.files.hasOwnProperty(file)) {
+        var gist = gistdata.files[file].content;
+        if (gist) {
+            objects.push(gist);
+        }
+    }
+  }
+  if (objects.length > 0) {
+    updateValue(objects[0])
+  }
+}).error( function(e) {
+  // ajax error
+});
+    
+}
+
+function updateValue(gist) {
+    editor.setValue(String(gist));
+}
+
+
 
    // Drag and drop functionality 
 
