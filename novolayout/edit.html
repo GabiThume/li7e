@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> LI7E : <%= doc_name %> </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="/static/css/fonts.css" />
+    <link href="/static/css/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/static/js/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="/static/js/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="/static/css/codemirror.css">
+
+    <link rel="stylesheet" href="/static/js/codemirror/theme/lesser-dark.css">
+
+    <script type="text/javascript" src="/static/js/codemirror/mode/javascript/javascript.js"></script>
+    <script type="text/javascript" src="/static/js/codemirror/mode/xml/xml.js"></script>
+    <script type="text/javascript" src="/static/js/codemirror/mode/css/css.js"></script> 
+    <script type="text/javascript" src="/static/js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>    
+<!--
+    <script type="text/javascript" src="/static/slider/js/jquery.ui.slider.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/slider/css/humanity/jquery-ui-slider.css" /> -->
+
+    <script type="text/javascript" src="/static/js/bootstrap-dropdown.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/edit.css" />
+
+  </head>
+
+  <body>
+
+<input type="checkbox" class="main-nav-check" id="main-nav-check" />
+
+    <div class="main-nav" id="main-nav">
+      <div id="li7e-button"></div>
+      <div id="panel-header">
+        <ul id="header-bar">
+          <li>
+            <span aria-hidden="true" class="icon-users button-header"></span>
+          </li>
+          <li>
+            <span aria-hidden="true" class="icon-star button-header"></span>
+          </li>
+          <li>
+            <span aria-hidden="true" class="icon-rocket button-header"></span>
+          </li>
+          <li>
+            <span aria-hidden="true" class="icon-upload button-header"></span>
+          </li>
+          <li>               
+            <span aria-hidden="true" class="icon-cog button-header"></span>
+          </li>
+        </ul>
+      </div>
+      <div id="panel-tabs"></div>
+      <div id="panel-code">
+
+            <textarea id="code" name="code"></textarea>
+
+</div>
+    </div>
+
+    <div id="canvas" class="page-wrap">
+          <label for="main-nav-check">
+              <span aria-hidden="true" class="icon-align-justify button-header"></span>
+          </label>
+      <iframe id="preview_iframe" frameborder="0"></iframe>
+    </div>
+
+
+
+    <script src="/static/js/li7e.js"></script>
+  
+    <script>
+
+
+    $('#menu').click(function(){
+        $('#scratchpad').toggleClass('menu');
+        mixpanel.track("Menu toggle");
+    })
+    
+$(document).ready(function(){
+        var active = false;
+        $("#li7e-button").click(function(){
+//.animate({opacity: "0.1", left: "+=400"}, 1200)
+                if (active === false) {
+                  $("#panel").animate({left: "+=600"}, "slow");
+                  $("#li7e-button").animate({marginRight: "+=35"}, "slow");
+                  active = true;
+                } else {
+                  $("#panel").animate({left: "-=600"}, "slow");
+                  $("#li7e-button").animate({marginRight: "-=35"}, "slow");
+                  active = false;
+                }
+                $(this).toggleClass("active"); return false;
+        });
+
+         
+});
+
+    </script>
+
+  </body>
+</html>
